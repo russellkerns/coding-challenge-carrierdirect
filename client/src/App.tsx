@@ -4,14 +4,20 @@ import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchFrostings } from './redux/frostings';
 import Frosting from './types/Frosting';
+import { fetchToppings } from './redux/toppings';
+import { fetchBases } from './redux/bases';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const frostings = useSelector((state: any) => state.frostings);
+  const toppings = useSelector((state: any) => state.toppings);
+  const bases = useSelector((state: any) => state.bases);
 
   useEffect(() => {
     dispatch(fetchFrostings());
-  }, []);
+    dispatch(fetchToppings());
+    dispatch(fetchBases());
+  });
 
   return (
     <div className="App">
@@ -28,13 +34,7 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
-        {!frostings.length ? (
-          <h1>Loading....</h1>
-        ) : (
-          frostings.map((frosting: Frosting) => {
-            console.log(frosting);
-          })
-        )}
+        {!frostings.length ? <h1>Loading....</h1> : null}
       </header>
     </div>
   );

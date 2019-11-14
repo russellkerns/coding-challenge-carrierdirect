@@ -13,7 +13,6 @@ export const fetchFrostings = () => {
     const { data } = await axios.get(
       'http://localhost:4000/cupcakes/frostings'
     );
-    console.log(data);
     dispatch(setFrostings(data.frostings));
   };
 };
