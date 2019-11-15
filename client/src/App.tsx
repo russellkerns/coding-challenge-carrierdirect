@@ -6,12 +6,11 @@ import { fetchFrostings } from './redux/frostings';
 import Frosting from './types/Frosting';
 import { fetchToppings } from './redux/toppings';
 import { fetchBases } from './redux/bases';
+import Navbar from './components/Navbar';
+import Root from './components/Root';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const frostings = useSelector((state: any) => state.frostings);
-  const toppings = useSelector((state: any) => state.toppings);
-  const bases = useSelector((state: any) => state.bases);
 
   useEffect(() => {
     dispatch(fetchFrostings());
@@ -20,23 +19,10 @@ const App: React.FC = () => {
   });
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {!frostings.length ? <h1>Loading....</h1> : null}
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Root />
+    </>
   );
 };
 
