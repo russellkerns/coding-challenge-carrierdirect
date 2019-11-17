@@ -5,7 +5,7 @@ const Welcome: React.FC = () => {
   return (
     <>
       <h1>Welcome</h1>
-      <Link to="/order">Click Me biatch</Link>
+      <Link to="/order">Click Me</Link>
     </>
   );
 };
