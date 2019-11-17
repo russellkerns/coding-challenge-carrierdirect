@@ -6,8 +6,10 @@ import { fetchFrostings } from './redux/frostings';
 import Frosting from './types/Frosting';
 import { fetchToppings } from './redux/toppings';
 import { fetchBases } from './redux/bases';
+import { fetchOrders } from './redux/orders';
 import Navbar from './components/Navbar';
 import Root from './components/Root';
+import { Layout } from './components/Layout';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,12 +18,15 @@ const App: React.FC = () => {
     dispatch(fetchFrostings());
     dispatch(fetchToppings());
     dispatch(fetchBases());
+    dispatch(fetchOrders());
   });
 
   return (
     <>
       <Navbar />
-      <Root />
+      <Layout>
+        <Root />
+      </Layout>
     </>
   );
 };

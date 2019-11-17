@@ -35,14 +35,15 @@ const OrderForm: React.FC<RouteComponentProps> = props => {
     }, 0);
 
   const total: number = (subTotal + 150) * 1.0875;
+  const salesTax: number = (subTotal + 150) * 0.0875;
 
   const handleSubmit = () => {
     const submit = {
       cupcakes: [
         {
-          base: base.key,
-          frosting: frosting.key,
-          toppings: topping.map((topping: Topping) => topping.key),
+          base,
+          frosting,
+          toppings,
         },
       ],
       delivery_date: startDate,
@@ -66,13 +67,23 @@ const OrderForm: React.FC<RouteComponentProps> = props => {
             handleChange={setTopping}
             toppingState={topping}
           />
-          <h1>{`Subtotal: ${priceConverter(subTotal)}`}</h1>
-          <h1>Delivery fee: $1.50</h1>
-          <h1>{`Total: ${priceConverter(total)}`}</h1>
-          <button type="submit" onClick={handleSubmit}>
-            Confirm your order
-          </button>
-          <DateSelector startDate={startDate} setStartDate={setStartDate} />
+          <div>
+            {!topping.length || !base.key || !frosting.key || (
+              <>
+                <h1>{`Subtotal: ${priceConverter(subTotal)}`}</h1>
+                <h1>Delivery fee: $1.50</h1>
+                <h1>{`Sales tax (8.75%): ${priceConverter(salesTax)}`}</h1>
+                <h1>{`Total: ${priceConverter(total)}`}</h1>
+                <button type="submit" onClick={handleSubmit}>
+                  Confirm your order
+                </button>
+                <DateSelector
+                  startDate={startDate}
+                  setStartDate={setStartDate}
+                />
+              </>
+            )}
+          </div>
         </div>
       ) : (
         <h2>loading.....</h2>

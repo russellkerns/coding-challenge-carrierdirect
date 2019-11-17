@@ -7,6 +7,7 @@ var __importDefault =
 Object.defineProperty(exports, '__esModule', { value: true });
 const express_1 = __importDefault(require('express'));
 const lowdb_1 = __importDefault(require('lowdb'));
+const _ = require('lodash');
 const FileSync_1 = __importDefault(require('lowdb/adapters/FileSync'));
 const cupcake_options_1 = __importDefault(
   require('./fixtures/cupcake-options')
@@ -41,17 +42,13 @@ app.get('/', (req, res) => {
 });
 app.post('/cupcakes/orders', (req, res) => {
   const { cupcakes, delivery_date } = req.body.order;
-  console.log('$$$$$$$', cupcakes);
-  console.log(delivery_date);
   try {
     const order = new Order_1.default(delivery_date, cupcakes);
     db.get('orders')
       .push(order)
       .write();
-    console.log('**********', order.id);
     res.send({ id: order.id });
   } catch (e) {
-    console.log(e);
     res.status(500).send(e.toString());
   }
 });

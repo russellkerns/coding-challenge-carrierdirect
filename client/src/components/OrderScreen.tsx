@@ -1,23 +1,27 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchOrders } from '../redux/orders';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Order from '../types/Order';
+import { Layout } from './Layout';
+import SortByDateDropdown from './SortByDateDropdown';
+import FilterByCupcakeComponent from './FilterByCupcakeComponent';
 
 const OrderScreen: React.FC = () => {
   const orders = useSelector((state: any) => state.orders);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchOrders());
-  }, orders);
 
   return (
-    <>
-      {orders
-        ? orders.map((order: Order) => (
-            <h1 key={order.id}>{order.cupcakes[0].base}</h1>
-          ))
-        : null}
-    </>
+    <Layout>
+      {orders ? (
+        <>
+          <SortByDateDropdown />
+          <FilterByCupcakeComponent />
+          {orders.map((order: Order) => (
+            <h1 key={order.id}>{order.delivery_date}</h1>
+          ))}
+        </>
+      ) : (
+        <h1>loading....</h1>
+      )}
+    </Layout>
   );
 };
 
