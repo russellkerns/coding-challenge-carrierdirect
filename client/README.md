@@ -1,6 +1,6 @@
-#Client instructions
+# Client instructions
 
-##Before starting this, make sure to follow the README in the root directory for server set-up
+## Before starting this, make sure to follow the README in the root directory for server set-up
 
 - Enter the client directory from the root directory
 
@@ -14,7 +14,7 @@ cd client
 npm install
 ```
 
-###In another terminal window, make sure the server is running, you can follow instructions for that in the README in the parent directory
+### In another terminal window, make sure the server is running, you can follow instructions for that in the README in the parent directory
 
 - Once the server is running and dependencies are installed
 
