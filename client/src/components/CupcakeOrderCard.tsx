@@ -1,16 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import Order from '../types/Order';
 import Topping from '../types/Topping';
 import './orderCard.scss';
-
-const Card = styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
-  max-width: 10rem;
-  margin: auto;
-  text-align: center
-  border: solid black 2px
-`;
 
 interface CardProps {
   order: Order;

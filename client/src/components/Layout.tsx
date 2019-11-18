@@ -1,7 +1,6 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import theme from '../utils/Theme';
-import { media } from '../utils/media';
 import './layout.scss';
 
 const GlobalStyle = createGlobalStyle`
