@@ -7,16 +7,15 @@ import './layout.scss';
 const GlobalStyle = createGlobalStyle`
   html{
     font-size: 100%
-
+    @media(max-width: 350px){
+      font-size: 62.5%
+    }
   }
-
   body {
     background: #fff5e7;
     font-size: 90%;
     color: ${theme.colors.grey.default};
-    @media ${media.phone} {
-      font-size: 14px;
-    }
+
   }
   a{
     text-decoration: none
@@ -28,7 +27,6 @@ const GlobalStyle = createGlobalStyle`
   a.chosen, a.chosen:hover{
     border-bottom: 1px solid #F14B31;
   }
-
 
   label {
     margin-bottom: .5rem;
@@ -49,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
   .checkbox {
     display: flex;
     cursor: pointer;
-
+    font-size: 0.75rem
 }
 
 .checkbox > span {

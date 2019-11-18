@@ -24,10 +24,21 @@ export const setOrdersAscending = () => ({
   type: SET_ORDERS_ASCENDING,
 });
 
-export const filterByCupcakeComponent = (filter: FilterObject) => ({
+export const filterByCupcakeComponent = (
+  filter: FilterObject,
+  orders: any
+) => ({
   type: `FILTER_BY_${filter.name}`,
   filter: filter.key,
+  orders,
 });
+
+export const fetchFilteredOrders = (filter: FilterObject) => {
+  return async (dispatch: any) => {
+    const { data } = await axios.get('http://localhost:4000/cupcakes/orders');
+    dispatch(filterByCupcakeComponent(filter, data.orders));
+  };
+};
 
 export const fetchOrders = (sort?: string) => {
   return async (dispatch: any) => {
@@ -43,8 +54,9 @@ export const fetchOrders = (sort?: string) => {
 };
 
 export const createOrder = (order: any) => {
-  return async () => {
+  return async (dispatch: any) => {
     await axios.post('http://localhost:4000/cupcakes/orders', { order: order });
+    dispatch(fetchOrders());
   };
 };
 
@@ -73,15 +85,15 @@ export default function orderReducer(state = initialState, action: any) {
         return dateB - dateA;
       });
     case FILTER_BY_BASE:
-      return state.filter(
+      return action.orders.filter(
         (order: Order) => order.cupcakes[0].base.key === action.filter
       );
     case FILTER_BY_FROSTING:
-      return state.filter(
+      return action.orders.filter(
         (order: Order) => order.cupcakes[0].frosting.key === action.filter
       );
     case FILTER_BY_TOPPING:
-      return state.filter((order: Order) =>
+      return action.orders.filter((order: Order) =>
         order.cupcakes[0].toppings.some((topping: any) => {
           return topping.key === action.filter;
         })

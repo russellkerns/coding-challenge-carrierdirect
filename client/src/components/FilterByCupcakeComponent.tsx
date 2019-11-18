@@ -5,6 +5,15 @@ import FilterDropdown from './FilterDropdown';
 import CupcakeButton from './CupcakeButton';
 import hasKey from '../utils/hasKey';
 import Select from './Select';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+  display: flex;
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
 const FilterByCupcakeComponent: React.FC = () => {
   const [filter, setFilter] = useState('');
@@ -24,23 +33,18 @@ const FilterByCupcakeComponent: React.FC = () => {
 
   return (
     <>
-      <>
-        {!filter && (
-          <Select
-            defaultValue=""
-            onChange={(e: any) => setFilter(e.target.value)}
-          >
-            <option value="" disabled hidden>
-              Filter by Cupcake Component
-            </option>
-            <option value="base" label="bases" />
-            <option value="frosting" label="frostings" />
-            <option value="topping" label="toppings" />
-          </Select>
-        )}
-      </>
-
-      <>
+      <StyledDiv>
+        <Select
+          defaultValue=""
+          onChange={(e: any) => setFilter(e.target.value)}
+        >
+          <option value="" disabled hidden>
+            Filter by Cupcake Component
+          </option>
+          <option value="base" label="Bases" />
+          <option value="frosting" label="Frostings" />
+          <option value="topping" label="Toppings" />
+        </Select>
         {filter && (
           <FilterDropdown
             type={`${filter}`}
@@ -48,6 +52,9 @@ const FilterByCupcakeComponent: React.FC = () => {
             setFilter={setFilter}
           />
         )}
+      </StyledDiv>
+
+      <>
         <div style={{ marginBottom: '1rem' }}>
           <CupcakeButton
             clickHandler={() => {

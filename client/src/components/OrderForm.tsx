@@ -66,6 +66,7 @@ const OrderForm: React.FC<RouteComponentProps> = props => {
       delivery_date: startDate,
     };
     dispatch(createOrder(submit));
+
     props.history.push('/order/history');
   };
 

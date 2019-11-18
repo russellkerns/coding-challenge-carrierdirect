@@ -19,6 +19,8 @@ const DateButton = styled.button`
   border-radius: 16px;
   border: 1px solid #d9d9d9;
   width: 8rem;
+  height: 3rem;
+  font-size: 1rem
   color: ${props => props.theme.colors.yellow};
 `;
 const CustomInput: React.FC<InputProps> = ({ value, onClick }) => (

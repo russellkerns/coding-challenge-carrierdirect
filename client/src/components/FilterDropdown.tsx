@@ -3,7 +3,7 @@ import Base from '../types/Base';
 import Topping from '../types/Topping';
 import Frosting from '../types/Frosting';
 import { useDispatch } from 'react-redux';
-import { filterByCupcakeComponent } from '../redux/orders';
+import { fetchFilteredOrders } from '../redux/orders';
 import Select from './Select';
 
 interface FilterProps {
@@ -21,7 +21,7 @@ const FilterDropdown: React.FC<FilterProps> = (props: FilterProps) => {
       onChange={(e: any) => {
         console.log(e.target.value);
         dispatch(
-          filterByCupcakeComponent({
+          fetchFilteredOrders({
             name: `${props.type.toUpperCase()}`,
             key: e.target.value,
           })
