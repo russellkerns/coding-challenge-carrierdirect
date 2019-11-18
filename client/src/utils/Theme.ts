@@ -11,7 +11,7 @@ const colors = {
     ultraLight: 'rgba(0, 0, 0, 0.25)',
   },
   blue: {
-    light: '#6699ff',
+    light: '#40BCD8',
     dark: '#0000ff',
   },
 };

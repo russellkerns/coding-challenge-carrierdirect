@@ -2,6 +2,7 @@ import React from 'react';
 import Base from '../types/Base';
 import Frosting from '../types/Frosting';
 import priceConverter from '../utils/priceConverter';
+import Select from './Select';
 
 interface OrderDropdownProps {
   type: string;
@@ -15,7 +16,7 @@ const OrderDropdown: React.FC<OrderDropdownProps> = (
 ) => {
   if (props.type === 'bases') {
     return (
-      <select
+      <Select
         defaultValue=""
         style={{ width: '19rem' }}
         onChange={(e: any) => {
@@ -33,11 +34,11 @@ const OrderDropdown: React.FC<OrderDropdownProps> = (
             base.name
           } ${priceConverter(base.price)}`}</option>
         ))}
-      </select>
+      </Select>
     );
   } else if (props.type === 'frostings') {
     return (
-      <select
+      <Select
         style={{ width: '19rem' }}
         defaultValue=""
         onChange={(e: any) => {
@@ -55,7 +56,7 @@ const OrderDropdown: React.FC<OrderDropdownProps> = (
             {`${frosting.name} ${priceConverter(frosting.price)}`}
           </option>
         ))}
-      </select>
+      </Select>
     );
   }
   return null;

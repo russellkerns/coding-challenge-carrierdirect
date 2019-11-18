@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchOrders } from '../redux/orders';
 import FilterDropdown from './FilterDropdown';
 import hasKey from '../utils/hasKey';
+import Select from './Select';
 
 const FilterByCupcakeComponent: React.FC = () => {
   const [filter, setFilter] = useState('');
@@ -23,16 +24,8 @@ const FilterByCupcakeComponent: React.FC = () => {
   return (
     <>
       <>
-        <button
-          onClick={() => {
-            dispatch(fetchOrders());
-            setFilter('');
-          }}
-        >
-          Reset Filters
-        </button>
         {!filter && (
-          <select
+          <Select
             defaultValue=""
             onChange={(e: any) => setFilter(e.target.value)}
           >
@@ -42,7 +35,7 @@ const FilterByCupcakeComponent: React.FC = () => {
             <option value="base" label="bases" />
             <option value="frosting" label="frostings" />
             <option value="topping" label="toppings" />
-          </select>
+          </Select>
         )}
       </>
 
@@ -54,88 +47,14 @@ const FilterByCupcakeComponent: React.FC = () => {
             setFilter={setFilter}
           />
         )}
-        {/* <FilterDropdown
-          type="frosting"
-          filter={frostings}
-          setFilter={setFilter}
-        />
-        <FilterDropdown
-          type="topping"
-          filter={toppings}
-          setFilter={setFilter}
-        /> */}
-        {/* {filter === 'bases' && (
-          <select
-            defaultValue=""
-            onChange={(e: any) => {
-              console.log(e.target.value);
-              dispatch(
-                filterByCupcakeComponent({
-                  name: 'BASE',
-                  key: e.target.value,
-                })
-              );
-              setFilter('');
-            }}
-          >
-            <option value="" disabled hidden label="Select a base" />
-            {bases.map((base: Base) => {
-              return (
-                <option value={base.key} key={base.key}>
-                  {base.name}
-                </option>
-              );
-            })}
-          </select>
-        )}
-        {filter === 'frostings' && (
-          <select
-            defaultValue=""
-            onChange={(e: any) => {
-              console.log(e.target.value);
-              dispatch(
-                filterByCupcakeComponent({
-                  name: 'FROSTING',
-                  key: e.target.value,
-                })
-              );
-              setFilter('');
-            }}
-          >
-            <option value="" disabled hidden label="Select a frosting" />
-            {frostings.map((frosting: Frosting) => {
-              return (
-                <option value={frosting.key} key={frosting.key}>
-                  {frosting.name}
-                </option>
-              );
-            })}
-          </select>
-        )}
-        {filter === 'toppings' && (
-          <select
-            defaultValue=""
-            onChange={(e: any) => {
-              console.log(e.target.value);
-              dispatch(
-                filterByCupcakeComponent({
-                  name: 'TOPPING',
-                  key: e.target.value,
-                })
-              );
-              setFilter('');
-            }}
-          >
-            <option value="" disabled hidden label="Select a topping" />
-            {toppings.map((topping: Topping) => {
-              return (
-                <option value={topping.key} key={topping.key}>
-                  {topping.name}
-                </option>
-              );
-            })}
-          </select>
-        )} */}
+        <button
+          onClick={() => {
+            dispatch(fetchOrders());
+            setFilter('');
+          }}
+        >
+          Reset Filters
+        </button>
       </>
     </>
   );

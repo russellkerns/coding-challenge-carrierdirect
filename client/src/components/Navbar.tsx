@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const StyledNav = styled.nav`
-  background-color: red;
+  background-color: ${props => props.theme.colors.pink};
   height: 5rem;
   padding: 0 3rem 0 3rem;
   display: flex;
@@ -17,17 +17,25 @@ const LinkDiv = styled.div`
   justify-content: space-between;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
+const StyledNavLink = styled(NavLink)`
+  color: ${props => props.theme.colors.yellow};
+`;
+
+const NavTitle = styled.h1`
+  color: ${props => props.theme.colors.yellow};
 `;
 
 const Navbar: React.FC = () => {
   return (
     <StyledNav>
-      <h1>Tinycakes</h1>
+      <NavTitle>Tinycakes</NavTitle>
       <LinkDiv>
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/order/history">Orders</StyledLink>
+        <StyledNavLink activeClassName="chosen" exact to="/">
+          Home
+        </StyledNavLink>
+        <StyledNavLink activeClassName="chosen" exact to="/order/history">
+          Orders
+        </StyledNavLink>
       </LinkDiv>
     </StyledNav>
   );

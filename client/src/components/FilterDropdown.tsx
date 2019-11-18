@@ -4,6 +4,7 @@ import Topping from '../types/Topping';
 import Frosting from '../types/Frosting';
 import { useDispatch } from 'react-redux';
 import { filterByCupcakeComponent } from '../redux/orders';
+import Select from './Select';
 
 interface FilterProps {
   type: string;
@@ -15,7 +16,7 @@ type Element = Base | Topping | Frosting;
 const FilterDropdown: React.FC<FilterProps> = (props: FilterProps) => {
   const dispatch = useDispatch();
   return (
-    <select
+    <Select
       defaultValue=""
       onChange={(e: any) => {
         console.log(e.target.value);
@@ -37,7 +38,7 @@ const FilterDropdown: React.FC<FilterProps> = (props: FilterProps) => {
           </option>
         );
       })}
-    </select>
+    </Select>
   );
 };
 

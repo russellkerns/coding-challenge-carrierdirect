@@ -10,28 +10,32 @@ const ToppingsForm: React.FC<ToppingsProps> = props => {
     <form>
       {props.toppings.map((topping: Topping) => (
         <React.Fragment key={topping.key}>
-          <input
-            type="checkbox"
-            name={topping.name}
-            value={topping.price}
-            onChange={(e: any) => {
-              let newProps: Topping[] = [];
-              if (!e.target.checked) {
-                newProps = props.toppingState.filter(topping => {
-                  return topping.name !== e.target.name;
-                });
-              } else {
-                const newTopping = props.toppings.filter((topping: Topping) => {
-                  return topping.name === e.target.name;
-                })[0];
-                newProps = [...props.toppingState, newTopping];
-              }
+          <label className="checkbox">
+            <input
+              type="checkbox"
+              name={topping.name}
+              value={topping.price}
+              onChange={(e: any) => {
+                let newProps: Topping[] = [];
+                if (!e.target.checked) {
+                  newProps = props.toppingState.filter(topping => {
+                    return topping.name !== e.target.name;
+                  });
+                } else {
+                  const newTopping = props.toppings.filter(
+                    (topping: Topping) => {
+                      return topping.name === e.target.name;
+                    }
+                  )[0];
+                  newProps = [...props.toppingState, newTopping];
+                }
 
-              props.handleChange(newProps);
-            }}
-          />
-          {topping.name}
-          <br />
+                props.handleChange(newProps);
+              }}
+            />
+            <span>{topping.name}</span>
+            <br />
+          </label>
         </React.Fragment>
       ))}
     </form>
