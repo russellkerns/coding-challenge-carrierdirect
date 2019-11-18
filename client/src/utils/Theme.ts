@@ -2,6 +2,8 @@ const colors = {
   primary: '#72cc96', // Color for buttons or links
   bg: '#fff', // Background color
   white: '#fff',
+  pink: '#E799C2',
+  yellow: '#FFF07C',
   grey: {
     dark: 'rgba(0, 0, 0, 0.9)',
     default: 'rgba(0, 0, 0, 0.7)',

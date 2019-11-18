@@ -127,59 +127,16 @@
   ],
   "orders": [
     {
-      "id": "6qzu2fk33g3rx3",
-      "delivery_date": "2019-11-20T20:21:09.000Z",
-      "cupcakes": [
-        {
-          "base": "lemonBase",
-          "frosting": "espressoButtercreamFrosting",
-          "toppings": [
-            "sprinkles",
-            "coconutFlakes",
-            "strawberries"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "6qzu2fk33g4xbi",
-      "delivery_date": "2019-11-19T20:22:01.000Z",
-      "cupcakes": [
-        {
-          "base": "chocolateBase",
-          "frosting": "espressoButtercreamFrosting",
-          "toppings": [
-            "sprinkles",
-            "coconutFlakes",
-            "strawberries"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "6qzu2fk33gaey0",
-      "delivery_date": "2019-11-18T20:26:22.734Z",
-      "cupcakes": [
-        {
-          "base": "redVelvetBase",
-          "frosting": "espressoButtercreamFrosting",
-          "toppings": [
-            "coconutFlakes"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "6qzudxk33gl8vq",
-      "delivery_date": "2019-11-18T20:34:44.308Z",
+      "id": "6qzzpjk33quo2i",
+      "delivery_date": "2019-11-19T01:21:24.000Z",
       "cupcakes": [
         {
           "base": {
-            "key": "lemonBase",
-            "name": "Lemon Bar Base",
-            "price": 64,
+            "key": "chocolateBase",
+            "name": "Chocolate Base",
+            "price": 75,
             "ingredients": [
-              "lemon bar"
+              "chocolate cake"
             ]
           },
           "frosting": {
@@ -222,46 +179,30 @@
               "ingredients": [
                 "gummy bear"
               ]
-            },
-            {
-              "key": "chocolateChips",
-              "name": "Chocolate Chips",
-              "price": 50,
-              "ingredients": [
-                "chocolate chips"
-              ]
-            },
-            {
-              "key": "cocoaPowder",
-              "name": "Cocoa Powder",
-              "price": 5,
-              "ingredients": [
-                "cocoa powder"
-              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "6qzus2k33l0n35",
-      "delivery_date": "2019-11-20T22:38:40.000Z",
+      "id": "6qzzpjk33rfh8u",
+      "delivery_date": "2019-11-22T01:38:09.000Z",
       "cupcakes": [
         {
           "base": {
-            "key": "lemonBase",
-            "name": "Lemon Bar Base",
-            "price": 64,
+            "key": "chocolateBase",
+            "name": "Chocolate Base",
+            "price": 75,
             "ingredients": [
-              "lemon bar"
+              "chocolate cake"
             ]
           },
           "frosting": {
-            "key": "espressoButtercreamFrosting",
-            "name": "Espresso Buttercream Frosting",
-            "price": 75,
+            "key": "chocolateFrosting",
+            "name": "Chocolate Frosting",
+            "price": 35,
             "ingredients": [
-              "buttercream"
+              "chocolate frosting"
             ]
           },
           "toppings": [
@@ -287,30 +228,6 @@
               "price": 15,
               "ingredients": [
                 "strawberries"
-              ]
-            },
-            {
-              "key": "gummyBears",
-              "name": "Gummy Bears",
-              "price": 25,
-              "ingredients": [
-                "gummy bear"
-              ]
-            },
-            {
-              "key": "chocolateChips",
-              "name": "Chocolate Chips",
-              "price": 50,
-              "ingredients": [
-                "chocolate chips"
-              ]
-            },
-            {
-              "key": "cocoaPowder",
-              "name": "Cocoa Powder",
-              "price": 5,
-              "ingredients": [
-                "cocoa powder"
               ]
             }
           ]

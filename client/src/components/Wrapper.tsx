@@ -4,6 +4,7 @@ import { media } from '../utils/media';
 export const Wrapper: any = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 0 auto;
   max-width: ${(props: any) => (props.fullWidth ? '100%' : '100rem')};
   padding: ${(props: any) => (props.fullWidth ? '0' : '0 6rem')};

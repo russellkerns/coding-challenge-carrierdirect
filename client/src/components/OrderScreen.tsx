@@ -4,6 +4,7 @@ import Order from '../types/Order';
 import { Layout } from './Layout';
 import SortByDateDropdown from './SortByDateDropdown';
 import FilterByCupcakeComponent from './FilterByCupcakeComponent';
+import CupcakeOrderCard from './CupcakeOrderCard';
 
 const OrderScreen: React.FC = () => {
   const orders = useSelector((state: any) => state.orders);
@@ -15,7 +16,7 @@ const OrderScreen: React.FC = () => {
           <SortByDateDropdown />
           <FilterByCupcakeComponent />
           {orders.map((order: Order) => (
-            <h1 key={order.id}>{order.delivery_date}</h1>
+            <CupcakeOrderCard key={order.id} order={order} />
           ))}
         </>
       ) : (

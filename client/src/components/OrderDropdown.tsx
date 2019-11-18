@@ -1,5 +1,4 @@
 import React from 'react';
-import Topping from '../types/Topping';
 import Base from '../types/Base';
 import Frosting from '../types/Frosting';
 import priceConverter from '../utils/priceConverter';

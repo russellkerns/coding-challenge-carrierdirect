@@ -76,6 +76,16 @@ export default function orderReducer(state = initialState, action: any) {
       return state.filter(
         (order: Order) => order.cupcakes[0].base.key === action.filter
       );
+    case FILTER_BY_FROSTING:
+      return state.filter(
+        (order: Order) => order.cupcakes[0].frosting.key === action.filter
+      );
+    case FILTER_BY_TOPPING:
+      return state.filter((order: Order) =>
+        order.cupcakes[0].toppings.some((topping: any) => {
+          return topping.key === action.filter;
+        })
+      );
     default:
       return state;
   }

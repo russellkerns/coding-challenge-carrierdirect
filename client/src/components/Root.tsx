@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import Welcome from './Welcome';
 import OrderForm from './OrderForm';
 import OrderScreen from './OrderScreen';
-import styled from 'styled-components';
 import { Layout } from './Layout';
 import { Wrapper } from './Wrapper';
 const Root: React.FC = () => {

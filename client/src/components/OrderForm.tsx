@@ -43,7 +43,7 @@ const OrderForm: React.FC<RouteComponentProps> = props => {
         {
           base,
           frosting,
-          toppings,
+          toppings: topping,
         },
       ],
       delivery_date: startDate,
