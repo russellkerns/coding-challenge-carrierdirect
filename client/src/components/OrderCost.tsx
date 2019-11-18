@@ -19,6 +19,10 @@ const OrderCost: React.FC<ReceiptProps> = (props: ReceiptProps) => {
           <div className="receipt-value">{`${priceConverter(subTotal)}$`}</div>
         </div>
         <div className="receipt-item">
+          <div className="receipt-label">Shipping Fee</div>
+          <div className="receipt-value">{`${priceConverter(150)}$`}</div>
+        </div>
+        <div className="receipt-item">
           <div className="receipt-label">Sales Tax (8.75%)</div>
           <div className="receipt-value">{`${priceConverter(salesTax)}$`}</div>
         </div>

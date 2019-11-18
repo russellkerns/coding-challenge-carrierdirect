@@ -39,17 +39,31 @@ const CupcakeOrderCard: React.FC<CardProps> = (props: CardProps) => {
         </div>
         <div className="card-item">
           <div className="card-label">Toppings:</div>
-
-          {toppings.map((topping: Topping) => {
-            return (
-              <React.Fragment key={topping.key}>
-                <div className="card-item">
-                  <div className="card-value" style={{ margin: 0 }}>
-                    {topping.name}
+          <div className="card-value">{toppings[0].name}</div>
+          {toppings.map((topping: Topping, idx: number) => {
+            if (!idx) {
+              return null;
+            } else if (idx === 1) {
+              return (
+                <React.Fragment key={topping.key}>
+                  <div className="card-item">
+                    <div className="card-value" style={{ marginTop: '1rem' }}>
+                      {topping.name}
+                    </div>
                   </div>
-                </div>
-              </React.Fragment>
-            );
+                </React.Fragment>
+              );
+            } else {
+              return (
+                <React.Fragment key={topping.key}>
+                  <div className="card-item">
+                    <div className="card-value" style={{ margin: 0 }}>
+                      {topping.name}
+                    </div>
+                  </div>
+                </React.Fragment>
+              );
+            }
           })}
         </div>
       </div>
