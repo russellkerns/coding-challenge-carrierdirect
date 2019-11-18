@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOrders } from '../redux/orders';
 import FilterDropdown from './FilterDropdown';
+import CupcakeButton from './CupcakeButton';
 import hasKey from '../utils/hasKey';
 import Select from './Select';
 
@@ -47,14 +48,15 @@ const FilterByCupcakeComponent: React.FC = () => {
             setFilter={setFilter}
           />
         )}
-        <button
-          onClick={() => {
-            dispatch(fetchOrders());
-            setFilter('');
-          }}
-        >
-          Reset Filters
-        </button>
+        <div style={{ marginBottom: '1rem' }}>
+          <CupcakeButton
+            clickHandler={() => {
+              dispatch(fetchOrders());
+              setFilter('');
+            }}
+            text="Reset Filters"
+          />
+        </div>
       </>
     </>
   );

@@ -7,10 +7,11 @@ import './layout.scss';
 const GlobalStyle = createGlobalStyle`
   html{
     font-size: 100%
+
   }
 
   body {
-    background: ${theme.colors.bg};
+    background: #fff5e7;
     font-size: 90%;
     color: ${theme.colors.grey.default};
     @media ${media.phone} {
@@ -52,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .checkbox > span {
-    color: #34495E;
+    color: ${theme.colors.blue.light}
     padding: 0.5rem 0.25rem;
 }
 

@@ -2,14 +2,26 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import OrderDropdown from './OrderDropdown';
 import ToppingsForm from './ToppingsForm';
-import Topping from '../types/Topping';
-import Base from '../types/Base';
-import Frosting from '../types/Frosting';
-import priceConverter from '../utils/priceConverter';
+import OrderCost from './OrderCost';
 import DateSelector from './DateSelector';
+import CupcakeButton from './CupcakeButton';
 import { addDays } from 'date-fns/esm';
 import { createOrder } from '../redux/orders';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import Topping from '../types/Topping';
+import Base from '../types/Base';
+import Frosting from '../types/Frosting';
+import styled from 'styled-components';
+
+const CheckoutDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const DatePickerDiv = styled.div`
+  margin-bottom: 1rem;
+`;
 
 const OrderForm: React.FC<RouteComponentProps> = props => {
   const toppings = useSelector((state: any) => state.toppings);
@@ -36,6 +48,11 @@ const OrderForm: React.FC<RouteComponentProps> = props => {
 
   const total: number = (subTotal + 150) * 1.0875;
   const salesTax: number = (subTotal + 150) * 0.0875;
+  const priceObject = {
+    total,
+    salesTax,
+    subTotal,
+  };
 
   const handleSubmit = () => {
     const submit = {
@@ -62,28 +79,34 @@ const OrderForm: React.FC<RouteComponentProps> = props => {
             frostings={frostings}
             handleChange={setFrosting}
           />
-          <ToppingsForm
-            toppings={toppings}
-            handleChange={setTopping}
-            toppingState={topping}
-          />
-          <div>
-            {!topping.length || !base.key || !frosting.key || (
+          {frosting.key &&
+            (base.key && (
+              <ToppingsForm
+                toppings={toppings}
+                handleChange={setTopping}
+                toppingState={topping}
+              />
+            ))}
+          <CheckoutDiv>
+            {!topping.length || (
               <>
-                <h1>{`Subtotal: ${priceConverter(subTotal)}`}</h1>
-                <h1>Delivery fee: $1.50</h1>
-                <h1>{`Sales tax (8.75%): ${priceConverter(salesTax)}`}</h1>
-                <h1>{`Total: ${priceConverter(total)}`}</h1>
-                <button type="submit" onClick={handleSubmit}>
-                  Confirm your order
-                </button>
-                <DateSelector
-                  startDate={startDate}
-                  setStartDate={setStartDate}
+                <OrderCost priceObject={priceObject} />
+                <h4 style={{ margin: `0 0 0.5rem 0` }}>
+                  Click to change shipping date
+                </h4>
+                <DatePickerDiv>
+                  <DateSelector
+                    startDate={startDate}
+                    setStartDate={setStartDate}
+                  />
+                </DatePickerDiv>
+                <CupcakeButton
+                  text="Confirm your order"
+                  clickHandler={handleSubmit}
                 />
               </>
             )}
-          </div>
+          </CheckoutDiv>
         </div>
       ) : (
         <h2>loading.....</h2>

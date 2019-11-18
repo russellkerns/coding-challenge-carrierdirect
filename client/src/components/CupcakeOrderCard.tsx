@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Order from '../types/Order';
 import Topping from '../types/Topping';
+import './orderCard.scss';
 
 const Card = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
   max-width: 10rem;
   margin: auto;
   text-align: center
+  border: solid black 2px
 `;
 
 interface CardProps {
@@ -21,14 +23,37 @@ const CupcakeOrderCard: React.FC<CardProps> = (props: CardProps) => {
     1}/${test.getDate()}/${test.getFullYear()} ${test.getHours()}:${test.getMinutes()}`;
 
   return (
-    <Card>
-      <h4>{deliveryDate}</h4>
-      <h4>{frosting.name}</h4>
-      <h4>{base.name}</h4>
-      {toppings.map((topping: Topping) => (
-        <h4 key={topping.key}>{topping.name}</h4>
-      ))}
-    </Card>
+    <div className="card">
+      <div className="card-list">
+        <div className="card-item">
+          <div className="card-label">Delivery Date:</div>
+          <div className="card-value">{deliveryDate}</div>
+        </div>
+        <div className="card-item">
+          <div className="card-label">Cupcake Base:</div>
+          <div className="card-value">{base.name}</div>
+        </div>
+        <div className="card-item">
+          <div className="card-label">Frosting:</div>
+          <div className="card-value">{frosting.name}</div>
+        </div>
+        <div className="card-item">
+          <div className="card-label">Toppings:</div>
+
+          {toppings.map((topping: Topping) => {
+            return (
+              <React.Fragment key={topping.key}>
+                <div className="card-item">
+                  <div className="card-value" style={{ margin: 0 }}>
+                    {topping.name}
+                  </div>
+                </div>
+              </React.Fragment>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 };
 
